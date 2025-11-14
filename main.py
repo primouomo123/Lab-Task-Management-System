@@ -1,5 +1,5 @@
 # Import functions from task_manager.task_utils package
-None
+from task_manager.task_utils import add_task, mark_task_as_complete, view_pending_tasks, calculate_progress
 
 # Define the main function
 def main():
@@ -13,10 +13,28 @@ def main():
         choice = input("Enter your choice (1-5): ")
 
         if choice == "1":
-            None
-        None
-        None
-        None
+            title = input("Enter task title:\n")
+            description = input("Enter task description:\n")
+            due_date = input("Enter due date (YYYY-MM-DD):\n")
+
+            add_task(title, description, due_date)
+
+        elif choice == "2":
+            index = int(input("Enter task index to mark as complete:\n"))
+            mark_task_as_complete(index)
+        
+        elif choice == "3":
+            pending_tasks = view_pending_tasks()
+            if not pending_tasks:
+                print("No pending tasks.")
+            else:
+                for i, task in enumerate(pending_tasks):
+                    print(f"{i}. Title: {task['title']}, Description: {task['description']}, Due Date: {task['due_date']}")
+        
+        elif choice == "4":
+            progress = calculate_progress()
+            print(f"Progress: {progress:.1f}% complete")
+            
         elif choice == "5":
             print("Exiting the program...")
             break
