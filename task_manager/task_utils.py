@@ -25,8 +25,6 @@ def mark_task_as_complete(index, tasks=tasks):
     if not tasks:
         print("No tasks available.")
         return
-    # Convert from 1-based to 0-based index
-    index = index - 1
     if index < 0 or index >= len(tasks):
         print("Invalid task index.")
         return
